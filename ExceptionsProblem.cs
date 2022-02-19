@@ -1,31 +1,41 @@
-﻿using System.CodeDom.Compiler;
-using System.Collections.Generic;
-using System.Collections;
-using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.Serialization;
-using System.Text.RegularExpressions;
-using System.Text;
-using System;
+﻿using System;
 
-
+//Write your code here
+public class Calculator
+{
+    public int power(int n, int p)
+    {
+        if (n >= 0 && p >= 0)
+            return (int)Math.Pow(n, p);
+        else
+            throw new InvalidOperationException("n and p should be non-negative");
+    }
+}
 
 class Solution
 {
-    public static void Main(string[] args)
+    static void Main(String[] args)
     {
-        string S = Console.ReadLine();
-        try
+        Calculator myCalculator = new Calculator();
+        int T = Int32.Parse(Console.ReadLine());
+        while (T-- > 0)
         {
-            Console.WriteLine(Convert.ToInt32((S)));
+            string[] num = Console.ReadLine().Split();
+            int n = int.Parse(num[0]);
+            int p = int.Parse(num[1]);
+            try
+            {
+                int ans = myCalculator.power(n, p);
+                Console.WriteLine(ans);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+
+            }
         }
-        catch (Exception ex)
-        {
-            Console.WriteLine("Bad String");
-        }
+
+
+
     }
 }
